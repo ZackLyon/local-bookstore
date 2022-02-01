@@ -33,13 +33,11 @@ describe('Art backend routes', () => {
       dob: '1945-02-14',
       pob: 'Brazil',
     });
-    const res = await request(app).get('/api/v1/authors');
+    const res = await request(app).get('/api/v1/authors/');
 
     expect(res.body).toContainEqual({
       id: expect.any(String),
       name: 'Ms. Person',
-      dob: '1945-02-14T07:00:00.000Z',
-      pob: 'Brazil',
     });
   });
 });
