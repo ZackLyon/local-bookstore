@@ -22,7 +22,7 @@ describe('Art backend routes', () => {
     expect(res.body).toEqual({
       id: expect.any(String),
       name: 'Ms. Person',
-      dob: '1945-02-14T07:00:00.000Z',
+      dob: '2/14/1945',
       pob: 'Brazil',
     });
   });
@@ -46,12 +46,12 @@ describe('Art backend routes', () => {
     expect(res.body).toEqual({
       id: expect.any(String),
       name: 'Karl Beyonce Karlson',
-      dob: '1996-04-22T07:00:00.000Z',
+      dob: '4/22/1996',
       pob: 'Seattle, WA',
-      // list of books
-      //id
-      //title
-      //released
+      // books: [{
+      //book_id: some id
+      //title: book title
+      //released: some date}]
     });
   });
 });
