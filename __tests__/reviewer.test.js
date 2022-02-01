@@ -26,7 +26,7 @@ describe('backend routes', () => {
 
     it('should post a reviewer', async () => {
         const res = await request(app)
-        .post('/reviewers')
+        .post('/api/v1/reviewers')
         .send(testReviewer);
 
         expect(res.body).toEqual(expectedReviewer)
@@ -34,7 +34,7 @@ describe('backend routes', () => {
     it('should get all reviewers', async () => {
         await Reviewer.insert(testReviewer);
         const res = await request(app)
-        .get('/reviewers');
+        .get('/api/v1/reviewers');
 
         expect(res.body).toEqual([{
             id: expect.any(String),
@@ -51,14 +51,14 @@ describe('backend routes', () => {
     it('should get a reviewer by id', async () => {
         const reviewer = await Reviewer.insert(testReviewer);
         const res = await request(app)
-        .get(`/reviewers/${reviewer.id}`);
+        .get(`/api/v1/reviewers/${reviewer.id}`);
 
         expect(res.body).toEqual(reviewer);
     });
     it('should update a reviewer by id', async ()=> {
         const reviewer = await Reviewer.insert(testReviewer);
         const res = await request(app)
-        .patch(`/reviewers/${reviewer.id}`)
+        .patch(`/api/v1/reviewers/${reviewer.id}`)
         .send({ name: 'ronald'});
 
         const expected = {
@@ -71,7 +71,7 @@ describe('backend routes', () => {
     it('should delete a reviewer by id', async () => {
         const reviewer = await Reviewer.insert(testReviewer);
         const res = await request(app)
-        .delete(`/reviewers/${reviewer.id}`);
+        .delete(`/api/v1/reviewers/${reviewer.id}`);
 
         expect(await Reviewer.getById(reviewer.id)).toBeNull();
     })
