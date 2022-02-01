@@ -2,7 +2,7 @@ const pool = require('../lib/utils/pool');
 const setup = require('../data/setup');
 const request = require('supertest');
 const app = require('../lib/app');
-const Publisher = require('../lib/services/Publisher');
+const Publisher = require('../lib/models/Publisher');
 
 describe('the backend routes', () => {
     beforeEach(() => {
