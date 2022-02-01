@@ -5,7 +5,8 @@ const app = require('../lib/app');
 const Publisher = require('../lib/models/Publisher');
 
 describe('the backend routes', () => {
-    beforeEach(() => {
+    beforeEach(() => //(async () => await setup(pool)) -- this is implicit so we dont need the curlies 
+    { //this is explicit, so we need the curlies
         return setup(pool);
     });
     afterAll(() => {
@@ -30,6 +31,7 @@ describe('the backend routes', () => {
             },
             { id: expect.any(String), name: 'BetweentheLyons', city: 'Portland', state: 'Oregon', country: 'United State of America'}]);
           });
+          
           it('should get a publisher by id', async () => {
             const publisher = await Publisher.insert({
                 name: 'BetweentheLyons', city: 'Portland', state: 'Oregon', country: 'United State of America'
