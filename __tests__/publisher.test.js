@@ -30,8 +30,12 @@ describe('the backend routes', () => {
             },
             { id: expect.any(String), name: 'BetweentheLyons', city: 'Portland', state: 'Oregon', country: 'United State of America'}]);
           });
-
-          
-
-
+          it('should get a publisher by id', async () => {
+            const publisher = await Publisher.insert({
+                name: 'BetweentheLyons', city: 'Portland', state: 'Oregon', country: 'United State of America'
+            });
+            const res = await request(app).get(`/api/v1/publishers/${publisher.id}`);
+           
+            expect(res.body).toEqual(publisher);
+          });
 })
