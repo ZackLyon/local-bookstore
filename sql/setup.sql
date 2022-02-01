@@ -53,9 +53,9 @@ CREATE TABLE review (
   review_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   rating NUMERIC(1,0) CHECK(rating >=1 AND rating<= 5) NOT NULL,
   review VARCHAR(140) NOT NULL,
-  reviewer_id BIGINT UNIQUE NOT NULL,
+  reviewer_id BIGINT NOT NULL,
   FOREIGN KEY (reviewer_id) REFERENCES reviewer(reviewer_id),
-  book_id BIGINT UNIQUE NOT NULL,
+  book_id BIGINT NOT NULL,
   FOREIGN KEY (book_id) REFERENCES book(book_id)
 );
 
