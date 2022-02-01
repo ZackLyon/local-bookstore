@@ -40,4 +40,18 @@ describe('Art backend routes', () => {
       name: 'Ms. Person',
     });
   });
+
+  it('gets one author with get by ID and lists their books', async () => {
+    const res = await request(app).get('/api/v1/authors/1');
+    expect(res.body).toEqual({
+      id: expect.any(String),
+      name: 'Karl Beyonce Karlson',
+      dob: '1996-04-22T07:00:00.000Z',
+      pob: 'Seattle, WA',
+      // list of books
+      //id
+      //title
+      //released
+    });
+  });
 });
