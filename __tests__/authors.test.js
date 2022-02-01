@@ -16,13 +16,13 @@ describe('Art backend routes', () => {
     const res = await request(app).post('/api/v1/authors/').send({
       name: 'Ms. Person',
       dob: '1945-02-14',
-      pod: 'Brazil',
+      pob: 'Brazil',
     });
     expect(res.body).toEqual({
       id: expect.any(String),
       name: 'Ms. Person',
-      dob: '1945-02-14',
-      pod: 'Brazil',
+      dob: '1945-02-14T07:00:00.000Z',
+      pob: 'Brazil',
     });
   });
 });
