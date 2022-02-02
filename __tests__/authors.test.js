@@ -4,7 +4,7 @@ const request = require('supertest');
 const app = require('../lib/app');
 const Author = require('../lib/models/Author');
 
-describe('Art backend routes', () => {
+describe('Author backend routes', () => {
   beforeEach(async () => {
     await setup(pool);
   });
