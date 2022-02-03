@@ -51,10 +51,10 @@ describe('books!', () => {
         publisher: { id: '1', name: 'Sarani Inc' },
         author: [{ author_id: 1, name: 'Karl Beyonce Karlson' }], // author id and name
         reviews: [{
-          id: '1',
-          rating: '5',
+          review_id: 1,
+          rating: 5,
           review: 'I thought I knew Karl, but now I know better.',
-          reviewer: { id: '1', name: 'Amit Just Amit' }
+          reviewer: { reviewer_id: 1, name: 'Amit Just Amit' }
         }]
       }
     );
