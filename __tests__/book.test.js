@@ -41,4 +41,25 @@ describe('books!', () => {
       },
     ]);
   });
+  it('should get a book by id', async () => {
+    const res = await request(app).get('/api/v1/books/1');
+
+    expect(res.body).toEqual(
+      {
+        title: 'You think you know Karl?',
+        released: '2010',
+        publisher: { id: '1', name: 'Sarani Inc' },
+        author: [{ id: '1', name: 'Karl Beyonce Karlson' }], // author id and name
+        reviews: [{
+          id: '1',
+          rating: '5',
+          review: 'I thought I knew Karl, but now I know better.',
+          reviewer: { id: '1', name: 'Amit Just Amit' }
+        }]
+      }
+
+      
+      
+    );
+  });
 });
