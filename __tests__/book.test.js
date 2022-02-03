@@ -12,6 +12,7 @@ describe('books!', () => {
     title: 'the last starfighting coder',
     publisher: 1,
     released: 1981,
+    authorIds: [1]
   };
 
   const testObjReceive = {
@@ -19,6 +20,7 @@ describe('books!', () => {
     title: 'the last starfighting coder',
     publisher: '1',
     released: '1981',
+    author: [{ id: '1', name: 'Karl Beyonce Karlson' }]
   };
 
   it('should make a new book entry in the database', async () => {
