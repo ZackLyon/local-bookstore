@@ -1,6 +1,8 @@
 -- Use this file to define your SQL tables
 -- The SQL in this file will be executed when you run `npm run setup-db`
 
+
+--we CAN put in CASCADE at the end of, for example, author and this will, hypothetically, delete the author from other tables if that specific author is deleted from the database
 DROP TABLE IF EXISTS publisher, author, reviewer, book, book_author, review;
 
 CREATE TABLE publisher (
