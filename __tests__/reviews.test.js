@@ -29,6 +29,32 @@ describe('reviews backend routes', () => {
     });
   });
 
+  it('should get all reviews by book id', async () => {
+    await Review.insert({
+      rating: 2,
+      review: 'horrible',
+      reviewerId: 1,
+      book: 1,
+    });
+
+    const response = await request(app).get('/api/v1/reviews/1');
+
+    expect(response.body).toEqual([
+      {
+        id: expect.any(String),
+        rating: '5',
+        review: 'I thought I knew Karl, but now I know better.',
+        reviewer:{ id: expect.any(String), name: 'Amit Just Amit' }
+      },
+      {
+        id: expect.any(String),
+        rating: '2',
+        review: 'horrible',
+        reviewer:{ id: expect.any(String), name: 'Amit Just Amit' }
+      }
+    ]);
+  });
+
   it('deletes a review with the review id', async () => {
     const testReview = await Review.insert({
       rating: 2,

@@ -41,20 +41,21 @@ describe('books!', () => {
       },
     ]);
   });
-  it('should get a book by id', async () => {
+  it.only('should get a book by id', async () => {
     const res = await request(app).get('/api/v1/books/1');
 
     expect(res.body).toEqual(
       {
+        id: expect.any(String),
         title: 'You think you know Karl?',
         released: '2010',
         publisher: { id: '1', name: 'Sarani Inc' },
-        author: [{ author_id: 1, name: 'Karl Beyonce Karlson' }], // author id and name
+        authors: [{ author_id: 1, name: 'Karl Beyonce Karlson' }], // author id and name
         reviews: [{
-          review_id: 1,
-          rating: 5,
+          id: '1',
+          rating: '5',
           review: 'I thought I knew Karl, but now I know better.',
-          reviewer: { reviewer_id: 1, name: 'Amit Just Amit' }
+          reviewer: { id: '1', name: 'Amit Just Amit' }
         }]
       }
     );
