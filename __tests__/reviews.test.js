@@ -37,7 +37,7 @@ describe('reviews backend routes', () => {
       book: 1,
     });
 
-    const response = await request(app).delete(`/api/v1/reviews/${testReview.review_id}`);
+    const response = await request(app).delete(`/api/v1/reviews/${testReview.id}`);
 
     expect(response.body).toEqual(testReview);
   });
