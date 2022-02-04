@@ -18,7 +18,7 @@ describe('books!', () => {
   const testObjReceive = {
     id: expect.any(String),
     title: 'the last starfighting coder',
-    publisher: '1',
+    publisher: { id: '1' },
     released: '1981',
     author: [{ id: '1', name: 'Karl Beyonce Karlson' }]
   };
@@ -49,17 +49,14 @@ describe('books!', () => {
         title: 'You think you know Karl?',
         released: '2010',
         publisher: { id: '1', name: 'Sarani Inc' },
-        author: [{ id: '1', name: 'Karl Beyonce Karlson' }], // author id and name
+        author: [{ author_id: 1, name: 'Karl Beyonce Karlson' }], // author id and name
         reviews: [{
-          id: '1',
-          rating: '5',
+          review_id: 1,
+          rating: 5,
           review: 'I thought I knew Karl, but now I know better.',
-          reviewer: { id: '1', name: 'Amit Just Amit' }
+          reviewer: { reviewer_id: 1, name: 'Amit Just Amit' }
         }]
       }
-
-      
-      
     );
   });
 });
