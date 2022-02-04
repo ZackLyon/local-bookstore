@@ -41,6 +41,8 @@ CREATE TABLE book_author (
   book_id BIGINT REFERENCES book(book_id),
   author_id BIGINT REFERENCES author(author_id)
 );
+INSERT INTO book_author (book_id, author_id)
+VALUES (1,1);
 
 CREATE TABLE reviewer (
   reviewer_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
