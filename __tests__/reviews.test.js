@@ -17,14 +17,15 @@ describe('reviews backend routes', () => {
     const response = await request(app).post('/api/v1/reviews/').send({
       rating: 2,
       review: 'horrible',
-      reviewer: 1,
+      reviewerId: 1,
       book: 1,
     });
     expect(response.body).toEqual({
       id: expect.any(String),
       rating: '2',
       review: 'horrible',
-      reviewer: '1',
+      reviewerId: '1',
+      reviewer: {},
       book: '1',
     });
   });
@@ -44,14 +45,14 @@ describe('reviews backend routes', () => {
         id: expect.any(String),
         rating: '5',
         review: 'I thought I knew Karl, but now I know better.',
-        reviewer:{ id: expect.any(String), name: 'Amit Just Amit' }
+        reviewer: { id: expect.any(String), name: 'Amit Just Amit' },
       },
       {
         id: expect.any(String),
         rating: '2',
         review: 'horrible',
-        reviewer:{ id: expect.any(String), name: 'Amit Just Amit' }
-      }
+        reviewer: { id: expect.any(String), name: 'Amit Just Amit' },
+      },
     ]);
   });
 
@@ -59,11 +60,13 @@ describe('reviews backend routes', () => {
     const testReview = await Review.insert({
       rating: 2,
       review: 'horrible',
-      reviewer: 1,
+      reviewerId: 1,
       book: 1,
     });
 
-    const response = await request(app).delete(`/api/v1/reviews/${testReview.id}`);
+    const response = await request(app).delete(
+      `/api/v1/reviews/${testReview.id}`
+    );
 
     expect(response.body).toEqual(testReview);
   });
