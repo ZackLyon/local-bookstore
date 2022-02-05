@@ -1,7 +1,7 @@
 -- Use this file to define your SQL tables
 -- The SQL in this file will be executed when you run `npm run setup-db`
 
-
+--creating staging branch
 --we CAN put in CASCADE at the end of, for example, author and this will, hypothetically, delete the author from other tables if that specific author is deleted from the database
 DROP TABLE IF EXISTS publisher, author, reviewer, book, book_author, review;
 
@@ -41,6 +41,8 @@ CREATE TABLE book_author (
   book_id BIGINT REFERENCES book(book_id),
   author_id BIGINT REFERENCES author(author_id)
 );
+INSERT INTO book_author (book_id, author_id)
+VALUES (1,1);
 
 CREATE TABLE reviewer (
   reviewer_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
